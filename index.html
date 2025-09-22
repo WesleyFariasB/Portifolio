@@ -1,0 +1,557 @@
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<title>Portfólio — Wesley Farias</title>
+<meta name="description" content="Portfólio de desenvolvimento web e design — projetos, habilidades e contato.">
+<style>
+/* ===== Reset-ish ===== */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#94a3b8;
+  --accent:#7c3aed;
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --max-width:1100px;
+  --radius:12px;
+  --ff-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--ff-system);
+  background:linear-gradient(180deg,#071025 0%, #0f1724 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding:32px 20px;
+  display:flex;
+  justify-content:center;
+}
+.container{width:100%;max-width:var(--max-width);}
+
+/* Header */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:28px;
+}
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+.logo{
+  width:48px;height:48px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#5eead4 120%);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+  color:#021026;
+  box-shadow:0 6px 18px rgba(124,58,237,0.18);
+}
+nav{display:flex;gap:18px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:0.95rem}
+nav a.cta{
+  background:linear-gradient(90deg, rgba(124,58,237,0.18), rgba(94,234,212,0.08));
+  padding:8px 12px;border-radius:10px;color:#e6eef8;font-weight:600;
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* Hero */
+.hero{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius:var(--radius);
+  padding:28px;
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:24px;
+  align-items:center;
+  margin-bottom:28px;
+  box-shadow: 0 8px 36px rgba(2,6,23,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+}
+.hero h1{margin:0;font-size:1.6rem}
+.hero p{color:var(--muted);margin-top:8px}
+.hero .actions{margin-top:16px;display:flex;gap:12px}
+.btn{
+  padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;
+  background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03);
+}
+.btn.primary{
+  background:linear-gradient(90deg,var(--accent),#5eead4);
+  color:#021026;
+  box-shadow:0 8px 24px rgba(124,58,237,0.18);
+  border:0;
+}
+
+/* Info card (right) */
+.info{
+  background:linear-gradient(180deg,var(--glass), var(--glass-2));
+  padding:16px;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-weight:600;margin-right:6px;font-size:0.85rem}
+
+/* Projects */
+.section{margin-bottom:28px}
+.section h2{margin:0 0 12px 0}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+  min-height:140px;display:flex;flex-direction:column;gap:10px;
+}
+.card img{width:100%;height:110px;object-fit:cover;border-radius:8px;background:#091022}
+.card h3{margin:0;font-size:1rem}
+.card p{margin:0;color:var(--muted);font-size:0.9rem;flex:1}
+.tag{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600;font-size:0.78rem}
+
+/* About & Skills */
+.two-col{display:grid;grid-template-columns:1fr 320px;gap:16px}
+.about{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.skills{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.skill{margin-bottom:10px}
+.skill .label{display:flex;justify-content:space-between;color:var(--muted);font-size:0.9rem;margin-bottom:6px}
+.progress{height:10px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
+.progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#5eead4);}
+
+/* Contact */
+.contact{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-top:8px}
+textarea{min-height:110px;resize:vertical}
+
+/* Footer */
+footer{margin-top:18px;color:var(--muted);font-size:0.9rem;text-align:center}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:1fr}
+  header{flex-direction:column;align-items:flex-start;gap:12px}
+}
+
+    .projetos {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .projetos h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #161b22;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    /* Carrossel */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 350px; /* aumentei espaço da imagem */
+      overflow: hidden;
+    }
+
+    .carousel-images {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .carousel-images img {
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+    }
+
+    .carousel button.prev {
+      left: 10px;
+    }
+
+    .carousel button.next {
+      right: 10px;
+    }
+
+    .card-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    .tags {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #21262d;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+    }
+
+    .card a {
+      margin-top: 15px;
+      text-decoration: none;
+      color: #fff;
+      background: #238636;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .card a:hover {
+      background: #2ea043;
+    }
+
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">WF</div>
+        <div>
+          <div style="font-weight:700">Wesley Farias Bezerra</div>
+          <div style="font-size:0.85rem;color:var(--muted)">Desenvolvimento Web & • UI/UX Design • </div>
+        </div>
+      </a>
+      <nav>
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato" class="cta">Contratar</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Apresentação">
+        <div>
+          <h1>Olá — eu sou <span style="color:var(--accent)">Wesley Farias Bezerra</span></h1>
+          <p>Crio interfaces bonitas e sites que funcionam. Tambem trabalho com identidade visual e criação de logo, transformo idéias em páginas rápidas, acessíveis e com UX pensada para conversão.</p>
+          <div class="actions">
+            <button class="btn primary" onclick="scrollToSection('#projetos')">Ver projetos</button>
+            <button class="btn" onclick="scrollToSection('#contato')">Falar comigo</button>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap">
+            <span class="pill">HTML • CSS • JS</span>
+            <span class="pill">React • Next.js</span>
+            <span class="pill">Figma • UI</span>
+            <span class="pill">Design </span>
+            <span class="pill">Identidade Visual</span>
+            <span class="pill">Logo</span>
+          </div>
+        </div>
+   
+      </section>
+
+     <section class="projetos">
+    <h2>Projetos</h2>
+    <div class="cards">
+
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="carousel">
+          <div class="carousel-images">
+            <img src="Imgs/Perfil (1).png" alt="">
+            <img src="Imgs/Perfil (12).png" alt="">
+            <img src="Imgs/Perfil (13).png" alt="">
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+        </div>
+        <h3>Landing Page + Blog</h3>
+        <p>Landing page responsiva com foco em conversão. HTML, CSS, JAVASCRIPT animações leves e formulário integrado.</p>
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JS</span>
+        </div>
+        <a href="#">Ver</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="carousel">
+          <div class="carousel-images">
+            <img src="Imgs/Perfil (5).png" alt="">
+            <img src="Imgs/Perfil (6).png" alt="">
+            <img src="Imgs/Perfil (7).png" alt="">
+
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+        </div>
+        <h3>Aplicativo + Banco de dados</h3>
+        <p>Aplicativo criado com foco em performance e SEO técnico. Deploy em Vercel/GitHub Pages.</p>
+        <div class="tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Node.js</span>
+
+        </div>
+        <a href="#">Ver</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="carousel">
+          <div class="carousel-images">
+            <img src="Imgs/Perfil (4).jpg" alt="">
+            <img src="Imgs/Perfil (2).jpg" alt="">
+            <img src="Imgs/perfil 20.jpg" alt="">
+            <img src="Imgs/perfil 21.png" alt="">
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+        </div>
+        <h3>Identidade Visual + Logo</h3>
+        <p>Pacotes de artes para Instagram — carrossel, capa e destaque. Templates editáveis no Figma.</p>
+        <div class="tags">
+          <span class="tag">Figma</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Adobe Ilustrator</span>
+        </div>
+        <a href="#">Ver</a>
+      </div>
+
+    </div>
+  </section>
+
+      <section id="sobre" class="section">
+        <h2>Sobre</h2>
+        <div class="two-col">
+          <div class="about">
+            <p>Meu nome é Wesley Farias, tenho 25 anos e atuo como desenvolvedor front-end, com experiência em projetos freelancer realizados para empresas de diferentes segmentos. Há dois anos iniciei minha formação em Sistemas para Internet e, desde então, venho me especializando em tecnologias como HTML, CSS, JavaScript, TypeScript e React, com ênfase no desenvolvimento de interfaces baseadas em layouts produzidos no Figma.
+
+Possuo também experiência em plataformas low-code, como WordPress e Elementor, e atuo na área de design gráfico, desenvolvendo projetos profissionais de identidade visual, logotipos, postagens para redes sociais e demais materiais visuais. Além disso, tenho conhecimentos em pacote Office, Excel, manutenção de computadores e sistemas Windows, o que me permite oferecer suporte a diferentes demandas técnicas.
+
+Sou um profissional dedicado e motivado, com foco em crescimento contínuo e desenvolvimento de carreira, buscando constantemente aprimorar minhas habilidades, compartilhar conhecimento e contribuir com ideias inovadoras e soluções eficazes para agregar valor à equipe e à empresa.</p>
+            <p style="margin-top:12px;color:var(--muted)"><strong>Como trabalho:</strong> briefing, prototipação (Figma), desenvolvimento, testes e deploy.</p>
+          </div>
+
+          <aside class="skills">
+            <h3 style="margin-top:0">Habilidades</h3>
+            <div class="skill">
+              <div class="label"><span>HTML &amp; CSS</span><span>95%</span></div>
+              <div class="progress" aria-hidden="true"><i style="width:95%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>JavaScript</span><span>75%</span></div>
+              <div class="progress"><i style="width:75%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>React / Next.js</span><span>70%</span></div>
+              <div class="progress"><i style="width:70%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>UI / Figma</span><span>85%</span></div>
+              <div class="progress"><i style="width:85%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>Adobe Ilustrator</span><span>80%</span></div>
+              <div class="progress"><i style="width:80%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>Photoshop</span><span>70%</span></div>
+              <div class="progress"><i style="width:70%"></i></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="contato" class="section">
+        <h2>Contato</h2>
+        <div class="contact">
+          <form onsubmit="handleSubmit(event)">
+            <label for="name">Nome</label>
+            <input id="name" name="name" required="" placeholder="Seu nome">
+            <label for="email">E‑mail</label>
+            <input id="email" name="email" type="email" required="" placeholder="seu@exemplo.com">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" required="" placeholder="Conte-me sobre seu projeto..."></textarea>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button type="submit" class="btn primary">Enviar</button>
+              <button type="button" class="btn" onclick="copyEmail()">Copiar e‑mail</button>
+            </div>
+            <div id="formMsg" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year">2025</span> Wesley Farias Bezerra — <span style="color:var(--muted)">Desenvolvimento Web & • UI/UX Design •</span>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+<div class="modal" id="modal">
+  <span class="close" id="close">&times;</span>
+  <img id="modal-img" alt="Imagem ampliada">
+</div>
+ 
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function scrollToSection(sel){
+  document.querySelector(sel).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function openProject(e, data){
+  e.preventDefault();
+  alert(data.title + "\\n\\n" + (data.desc || '') + (data.link ? "\\n" + data.link : ''));
+}
+
+/* Simple form handler — replace with your backend or form provider (Formspree, EmailJS, Netlify forms) */
+function handleSubmit(e){
+  e.preventDefault();
+  const name = e.target.name.value.trim(), email = e.target.email.value.trim();
+  if(!name || !email){ document.getElementById('formMsg').textContent = 'Preencha os campos.'; return; }
+  // Simulate success
+  document.getElementById('formMsg').textContent = 'Mensagem enviada! (exemplo local — configure envio real)';
+  e.target.reset();
+}
+
+function copyEmail(){
+  navigator.clipboard?.writeText('seunome@email.com').then(()=>{
+    alert('E‑mail copiado.');
+  });
+}
+
+// Pega elementos do modal
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  const closeBtn = document.getElementById("close");
+
+  // Para cada imagem dos carrosséis, adiciona evento de clique
+  document.querySelectorAll(".carousel-images img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex"; // mostra popup
+      modalImg.src = img.src; // coloca a imagem clicada dentro do modal
+    });
+  });
+
+  // Fecha o modal ao clicar no X
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Fecha o modal clicando fora da imagem
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+    document.querySelectorAll(".carousel").forEach(carousel => {
+      const images = carousel.querySelector(".carousel-images");
+      const prev = carousel.querySelector(".prev");
+      const next = carousel.querySelector(".next");
+      const total = images.children.length;
+      let index = 0;
+
+      function showImage(i) {
+        index = (i + total) % total;
+        images.style.transform = `translateX(${-index * 100}%)`;
+      }
+
+      prev.addEventListener("click", () => showImage(index - 1));
+      next.addEventListener("click", () => showImage(index + 1));
+    });
+
+src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+AOS.init();
+
+</script>
+
+
+
+
+</body></html>
