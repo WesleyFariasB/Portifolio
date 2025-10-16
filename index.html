@@ -1,563 +1,671 @@
-<html lang="pt-BR"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<title>Portfólio — Wesley Farias</title>
-<meta name="description" content="Portfólio de desenvolvimento web e design — projetos, habilidades e contato.">
-<style>
-/* ===== Reset-ish ===== */
-:root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --muted:#94a3b8;
-  --accent:#7c3aed;
-  --glass: rgba(255,255,255,0.04);
-  --glass-2: rgba(255,255,255,0.02);
-  --max-width:1100px;
-  --radius:12px;
-  --ff-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:var(--ff-system);
-  background:linear-gradient(180deg,#071025 0%, #0f1724 100%);
-  color:#e6eef8;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.45;
-  padding:32px 20px;
-  display:flex;
-  justify-content:center;
-}
-.container{width:100%;max-width:var(--max-width);}
-
-/* Header */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  margin-bottom:28px;
-}
-.brand{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  text-decoration:none;
-  color:inherit;
-}
-.logo{
-  width:48px;height:48px;border-radius:10px;
-  background:linear-gradient(135deg,var(--accent),#5eead4 120%);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;
-  color:#021026;
-  box-shadow:0 6px 18px rgba(124,58,237,0.18);
-}
-nav{display:flex;gap:18px;align-items:center}
-nav a{color:var(--muted);text-decoration:none;font-size:0.95rem}
-nav a.cta{
-  background:linear-gradient(90deg, rgba(124,58,237,0.18), rgba(94,234,212,0.08));
-  padding:8px 12px;border-radius:10px;color:#e6eef8;font-weight:600;
-  border:1px solid rgba(255,255,255,0.03);
-}
-
-/* Hero */
-.hero{
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-  border-radius:var(--radius);
-  padding:28px;
-  display:grid;
-  grid-template-columns: 1fr 360px;
-  gap:24px;
-  align-items:center;
-  margin-bottom:28px;
-  box-shadow: 0 8px 36px rgba(2,6,23,0.6);
-  border:1px solid rgba(255,255,255,0.03);
-}
-.hero h1{margin:0;font-size:1.6rem}
-.hero p{color:var(--muted);margin-top:8px}
-.hero .actions{margin-top:16px;display:flex;gap:12px}
-.btn{
-  padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;
-  background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03);
-}
-.btn.primary{
-  background:linear-gradient(90deg,var(--accent),#5eead4);
-  color:#021026;
-  box-shadow:0 8px 24px rgba(124,58,237,0.18);
-  border:0;
-}
-
-/* Info card (right) */
-.info{
-  background:linear-gradient(180deg,var(--glass), var(--glass-2));
-  padding:16px;border-radius:12px;
-  border:1px solid rgba(255,255,255,0.02);
-}
-.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-weight:600;margin-right:6px;font-size:0.85rem}
-
-/* Projects */
-.section{margin-bottom:28px}
-.section h2{margin:0 0 12px 0}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-  padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-  min-height:140px;display:flex;flex-direction:column;gap:10px;
-}
-.card img{width:100%;height:110px;object-fit:cover;border-radius:8px;background:#091022}
-.card h3{margin:0;font-size:1rem}
-.card p{margin:0;color:var(--muted);font-size:0.9rem;flex:1}
-.tag{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600;font-size:0.78rem}
-
-/* About & Skills */
-.two-col{display:grid;grid-template-columns:1fr 320px;gap:16px}
-.about{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-.skills{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-.skill{margin-bottom:10px}
-.skill .label{display:flex;justify-content:space-between;color:var(--muted);font-size:0.9rem;margin-bottom:6px}
-.progress{height:10px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
-.progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#5eead4);}
-
-/* Contact */
-.contact{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-top:8px}
-textarea{min-height:110px;resize:vertical}
-
-/* Footer */
-footer{margin-top:18px;color:var(--muted);font-size:0.9rem;text-align:center}
-
-/* Responsive */
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr}
-  .two-col{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  nav{display:none}
-}
-@media (max-width:520px){
-  .grid{grid-template-columns:1fr}
-  header{flex-direction:column;align-items:flex-start;gap:12px}
-}
-
-    .projetos {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-
-    .projetos h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #161b22;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-
-    /* Carrossel */
-    .carousel {
-      position: relative;
-      width: 100%;
-      height: 350px; /* aumentei espaço da imagem */
-      overflow: hidden;
-    }
-
-    .carousel-images {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.4s ease-in-out;
-    }
-
-    .carousel-images img {
-      min-width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .carousel button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      border: none;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 50%;
-    }
-
-    .carousel button.prev {
-      left: 10px;
-    }
-
-    .carousel button.next {
-      right: 10px;
-    }
-
-    .card-content {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card h3 {
-      margin: 10px 0 5px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #bbb;
-    }
-
-    .tags {
-      margin-top: 10px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background: #21262d;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-    }
-
-    .card a {
-      margin-top: 15px;
-      text-decoration: none;
-      color: #fff;
-      background: #238636;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      display: block;
-      transition: background 0.3s;
-    }
-
-    .card a:hover {
-      background: #2ea043;
-    }
-
-.modal {
-  display: none; /* Escondido por padrão */
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.modal .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-</style>
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wesley Farias - Desenvolvedor Front-end React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-bar {
+            position: relative;
+            background: #1f2937;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 2s ease-in-out;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #1f2937, #111827);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(102, 126, 234, 0.8);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(102, 126, 234, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: #667eea;
+            transform: scale(1.2);
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #667eea;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: #667eea; }
+            51%, 100% { border-color: transparent; }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+       
+    </style>
 </head>
-<body>
-  <div class="container">
-    <header>
-      <a class="brand" href="#">
-        <div class="logo">WF</div>
-        <div>
-          <div style="font-weight:700">Wesley Farias Bezerra</div>
-          <div style="font-size:0.85rem;color:var(--muted)">Desenvolvimento Web & • UI/UX Design • </div>
-        </div>
-      </a>
-      <nav>
-        <a href="#projetos">Projetos</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato" class="cta">Contratar</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero" aria-label="Apresentação">
-        <div>
-          <h1>Olá — eu sou <span style="color:var(--accent)">Wesley Farias Bezerra</span></h1>
-          <p>Crio interfaces bonitas e sites que funcionam. Tambem trabalho com identidade visual e criação de logo, transformo idéias em páginas rápidas, acessíveis e com UX pensada para conversão.</p>
-          <div class="actions">
-            <button class="btn primary" onclick="scrollToSection('#projetos')">Ver projetos</button>
-            <button class="btn" onclick="scrollToSection('#contato')">Falar comigo</button>
-          </div>
-
-          <div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap">
-            <span class="pill">HTML • CSS • JS</span>
-            <span class="pill">React • Next.js</span>
-            <span class="pill">Figma • UI</span>
-            <span class="pill">Design </span>
-            <span class="pill">Identidade Visual</span>
-            <span class="pill">Logo</span>
-          </div>
-        </div>
-   
-      </section>
-
-     <section class="projetos">
-    <h2>Projetos</h2>
-    <div class="cards">
-
-      <!-- Card 1 -->
-      <div class="card">
-        <div class="carousel">
-          <div class="carousel-images">
-            <img src="Imgs/Perfil (1).png" alt="">
-            <img src="Imgs/Perfil (12).png" alt="">
-            <img src="Imgs/Perfil (13).png" alt="">
-          </div>
-          <button class="prev">&#10094;</button>
-          <button class="next">&#10095;</button>
-        </div>
-        <h3>Landing Page + Blog</h3>
-        <p>Landing page responsiva com foco em conversão. HTML, CSS, JAVASCRIPT animações leves e formulário integrado.</p>
-        <div class="tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JS</span>
-        </div>
-        <a href="#">Ver</a>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card">
-        <div class="carousel">
-          <div class="carousel-images">
-            <img src="Imgs/Perfil (5).png" alt="">
-            <img src="Imgs/Perfil (6).png" alt="">
-            <img src="Imgs/Perfil (7).png" alt="">
-
-          </div>
-          <button class="prev">&#10094;</button>
-          <button class="next">&#10095;</button>
-        </div>
-        <h3>Aplicativo + Banco de dados</h3>
-        <p>Aplicativo criado com foco em performance e SEO técnico. Deploy em Vercel/GitHub Pages.</p>
-        <div class="tags">
-          <span class="tag">React Native</span>
-          <span class="tag">Node.js</span>
-
-        </div>
-        <a href="#">Ver</a>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card">
-        <div class="carousel">
-          <div class="carousel-images">
-            <img src="Imgs/Perfil (4).jpg" alt="">
-            <img src="Imgs/Perfil (2).jpg" alt="">
-            <img src="Imgs/perfil 20.jpg" alt="">
-            <img src="Imgs/perfil 21.png" alt="">
-          </div>
-          <button class="prev">&#10094;</button>
-          <button class="next">&#10095;</button>
-        </div>
-        <h3>Identidade Visual + Logo</h3>
-        <p>Pacotes de artes para Instagram — carrossel, capa e destaque. Templates editáveis no Figma.</p>
-        <div class="tags">
-          <span class="tag">Photoshop</span>
-          <span class="tag">Adobe Ilustrator</span>
-        </div>
-        <a href="#">Ver</a>
-      </div>
-
-    </div>
-  </section>
-
-      <section id="sobre" class="section">
-        <h2>Sobre</h2>
-        <div class="two-col">
-          <div class="about">
-            <p>Meu nome é Wesley Farias, tenho 25 anos e atuo como desenvolvedor front-end, com experiência em projetos freelancer realizados para empresas de diferentes segmentos. Há dois anos iniciei minha formação em Sistemas para Internet e, desde então, venho me especializando em tecnologias como HTML, CSS, JavaScript, TypeScript e React, com ênfase no desenvolvimento de interfaces baseadas em layouts produzidos no Figma.
-
-Possuo também experiência em plataformas low-code, como WordPress e Elementor, e atuo na área de design gráfico, desenvolvendo projetos profissionais de identidade visual, logotipos, postagens para redes sociais e demais materiais visuais. Além disso, tenho conhecimentos em pacote Office, Excel, manutenção de computadores e sistemas Windows, o que me permite oferecer suporte a diferentes demandas técnicas.
-
-Sou um profissional dedicado e motivado, com foco em crescimento contínuo e desenvolvimento de carreira, buscando constantemente aprimorar minhas habilidades, compartilhar conhecimento e contribuir com ideias inovadoras e soluções eficazes para agregar valor à equipe e à empresa.</p>
-            <p style="margin-top:12px;color:var(--muted)"><strong>Como trabalho:</strong> briefing, prototipação (Figma), desenvolvimento, testes e deploy.</p>
-          </div>
-
-          <aside class="skills">
-            <h3 style="margin-top:0">Habilidades</h3>
-            <div class="skill">
-              <div class="label"><span>HTML &amp; CSS</span><span>95%</span></div>
-              <div class="progress" aria-hidden="true"><i style="width:95%"></i></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>JavaScript</span><span>75%</span></div>
-              <div class="progress"><i style="width:75%"></i></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>React / Next.js</span><span>70%</span></div>
-              <div class="progress"><i style="width:70%"></i></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>UI / Figma</span><span>85%</span></div>
-              <div class="progress"><i style="width:85%"></i></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>Adobe Ilustrator</span><span>80%</span></div>
-              <div class="progress"><i style="width:80%"></i></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>Photoshop</span><span>70%</span></div>
-              <div class="progress"><i style="width:70%"></i></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>Ingles</span><span>70%</span></div>
-              <div class="progress"><i style="width:70%"></i></div>
-            </div>
-             <div class="skill">
-              <div class="label"><span>Espanhol</span><span>85%</span></div>
-              <div class="progress"><i style="width:85%"></i></div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section id="contato" class="section">
-        <h2>Contato</h2>
-        <div class="contact">
-          <form onsubmit="handleSubmit(event)">
-            <label for="name">Nome</label>
-            <input id="name" name="name" required="" placeholder="Seu nome">
-            <label for="email">E‑mail</label>
-            <input id="email" name="email" type="email" required="" placeholder="seu@exemplo.com">
-            <label for="message">Mensagem</label>
-            <textarea id="message" name="message" required="" placeholder="Conte-me sobre seu projeto..."></textarea>
-            <div style="display:flex;gap:8px;margin-top:10px">
-              <button type="submit" class="btn primary">Enviar</button>
-              <button type="button" class="btn" onclick="copyEmail()">Copiar e‑mail</button>
-            </div>
-            <div id="formMsg" style="margin-top:10px;color:var(--muted);font-size:0.95rem"></div>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="year">2025</span> Wesley Farias Bezerra — <span style="color:var(--muted)">Desenvolvimento Web & • UI/UX Design •</span>
-    </footer>
-  </div>
-
-  <!-- Modal -->
-<div class="modal" id="modal">
-  <span class="close" id="close">&times;</span>
-  <img id="modal-img" alt="Imagem ampliada">
-</div>
+<body class="bg-black text-white font-sans">
  
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">WF Visuals Design</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-purple-400 transition-colors">Início</a>
+                    <a href="#projects" class="hover:text-purple-400 transition-colors">Projetos</a>
+                    <a href="#skills" class="hover:text-purple-400 transition-colors">Habilidades</a>
+                    <a href="#contact" class="hover:text-purple-400 transition-colors">Contato</a>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-4">
+                <a href="#home" class="block hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Início</a>
+                <a href="#projects" class="block hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Projetos</a>
+                <a href="#skills" class="block hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Habilidades</a>
+                <a href="#contact" class="block hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Contato</a>
+            </div>
+        </div>
+    </nav>
 
-function scrollToSection(sel){
-  document.querySelector(sel).scrollIntoView({behavior:'smooth',block:'start'});
-}
+    
+    <section id="home" class="min-h-full flex items-center justify-center px-4 pt-20">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="floating mb-8">
+                <div>
+                    <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
+                        <img src="img/eu (2).png">
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                Olá, eu sou <span class="gradient-text">Wesley Farias</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 typing-animation" id="typingText">
+                Desenvolvedor Front-end & Design UX/UI
+            </p>
+            <p class="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
+                Crio interfaces bonitas e sites que funcionam. Tambem trabalho com identidade visual e criação de logo, transformo idéias em páginas rápidas, acessíveis e com UX pensada para conversão, com mais de 2 anos de experiência na área.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 rounded-full text-white font-semibold hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105">
+                    Ver Projetos
+                </a>
+                <a href="#contact" class="border-2 border-purple-600 px-8 py-4 rounded-full text-purple-400 font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                    Entre em Contato
+                </a>
+            </div>
+        </div>
+    </section>
 
-function openProject(e, data){
-  e.preventDefault();
-  alert(data.title + "\\n\\n" + (data.desc || '') + (data.link ? "\\n" + data.link : ''));
-}
+    
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Meus Projetos</h2>
+            <div class="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
+                
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4 cursor-pointer" onclick="openModal(0)">
+                        <div class="w-full h-48  rounded-lg flex items-center justify-center">
+                           <div><img class="imagemp1" src="img/Perfilp1.png" alt=""></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Landing Page + Blog </h3>
+                    <p class="text-gray-400 mb-4">Landing page responsiva com foco em conversão. HTML, CSS, JAVASCRIPT animações leves e formulário integrado.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-600 px-3 py-1 rounded-full text-sm">React</span>
+                        <span class="bg-green-600 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                        <span class="bg-purple-600 px-3 py-1 rounded-full text-sm">NextJS</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="openModal(0)" class="text-purple-400 hover:text-purple-300 transition-colors">
+                            <i class="fas fa-eye mr-2"></i>Ver Detalhes
+                        </button>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors">
+                            
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4 cursor-pointer" onclick="openModal(1)">
+                       <div class="w-full h-48  rounded-lg flex items-center justify-center">
+                           <div><img class="imagemp1" src="img/E1.png" alt=""></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">E-commerce</h3>
+                    <p class="text-gray-400 mb-4">Plataforma completa de e-commerce com carrinho, pagamentos e painel admin.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-600 px-3 py-1 rounded-full text-sm">Wordpress</span>
+                        <span class="bg-green-600 px-3 py-1 rounded-full text-sm">Elementor PRO</span>
+                     
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="openModal(1)" class="text-purple-400 hover:text-purple-300 transition-colors">
+                            <i class="fas fa-eye mr-2"></i>Ver Detalhes
+                        </button>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors">
+                            
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-xl p-6 border border-gray-700">
+                    <div class="mb-4 cursor-pointer" onclick="openModal(2)">
+                        <div class="w-full h-48  rounded-lg flex items-center justify-center">
+                           <div><img class="imagemp1" src="img/id1.png" alt=""></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Identidade Visual</h3>
+                    <p class="text-gray-400 mb-4">Aplicativo criado com foco em performance e SEO técnico. Deploy em GitHub.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-600 px-3 py-1 rounded-full text-sm">Photoshop</span>
+                        <span class="bg-yellow-600 px-3 py-1 rounded-full text-sm">Adobe Ilustrator</span>
+                        
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="openModal(2)" class="text-purple-400 hover:text-purple-300 transition-colors">
+                            <i class="fas fa-eye mr-2"></i>Ver Detalhes
+                        </button>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors">
+                            
+                        </a>
+                    </div>
+                </div>
 
-/* Simple form handler — replace with your backend or form provider (Formspree, EmailJS, Netlify forms) */
-function handleSubmit(e){
-  e.preventDefault();
-  const name = e.target.name.value.trim(), email = e.target.email.value.trim();
-  if(!name || !email){ document.getElementById('formMsg').textContent = 'Preencha os campos.'; return; }
-  // Simulate success
-  document.getElementById('formMsg').textContent = 'Mensagem enviada! (exemplo local — configure envio real)';
-  e.target.reset();
-}
+                
+                
+            </div>
+        </div>
+    </section>
 
-function copyEmail(){
-  navigator.clipboard?.writeText('seunome@email.com').then(()=>{
-    alert('E‑mail copiado.');
-  });
-}
+    
+    <section id="skills" class="py-20 px-4 ">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Minhas Habilidades</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">Tecnologias Front-end</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">React.js</span>
+                                <span class="text-purple-400">79%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="79"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">TypeScript</span>
+                                <span class="text-purple-400">81%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="81"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Next.js</span>
+                                <span class="text-purple-400">76%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="76"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">HTML5 & CSS3</span>
+                                <span class="text-purple-400">92%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Figma</span>
+                                <span class="text-purple-400">80%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Git & GitHub</span>
+                                <span class="text-purple-400">75%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">Ferramentas & Outros</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Wordpress</span>
+                                <span class="text-purple-400">90%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Elementor PRO</span>
+                                <span class="text-purple-400">97%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="97"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Photoshop</span>
+                                <span class="text-purple-400">73%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="73"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Canva PRO</span>
+                                <span class="text-purple-400">84%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="84"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Inglês</span>
+                                <span class="text-purple-400">70%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Espanhol</span>
+                                <span class="text-purple-400">76%</span>
+                            </div>
+                            <div class="skill-bar h-3">
+                                <div class="skill-progress" data-width="76"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Pega elementos do modal
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modal-img");
-  const closeBtn = document.getElementById("close");
+    
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-left mb-16 gradient-text">Entre em Contato</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Vamos conversar!</h3>
+                    <p class="text-gray-400 mb-8">
+                        Estou sempre aberto a discutir novos projetos, oportunidades criativas ou parcerias. 
+                        Entre em contato e vamos criar algo incrível juntos!
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-purple-400 text-xl mr-4"></i>
+                            <span>wesleyfariasbe@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-purple-400 text-xl mr-4"></i>
+                            <span>+55 (83) 98603-6971</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-purple-400 text-xl mr-4"></i>
+                            <span>João Pessoa, PB - Brasil</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Faça seu orçamento via Whatsapp!</h3>
+                    <p class="text-gray-400 mb-8">
+                        Estou disponivel a partir das 08:00 ás 18:00
+                        De segunda a sexta .
+                        Ainda está em dúvida sobre algum projeto? mande sua mensagem via Whatsapp e venha nos conhecer melhor.
+                    </p>
+                    </div>
+                     <div class="flex space-x-4 mt-8">
+                        <a href="https://api.whatsapp.com/send?phone=5583986036971&text=Olá,estou interessado em conhecer melhor seu trabalho" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-110">
+                            <i class="fab fa-whatsapp text-white"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/wesley-farias-5567b7351" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-110">
+                            <i class="fab fa-linkedin text-white"></i>
+                        </a>
+                        <a href="https://github.com/WesleyFariasB/Portifolio/settings/pages" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-110">
+                            <i class="fab fa-github text-white"></i>
+                         </a>
+                       <a href="https://www.instagram.com/visualswf" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-110">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  // Para cada imagem dos carrosséis, adiciona evento de clique
-  document.querySelectorAll(".carousel-images img").forEach(img => {
-    img.addEventListener("click", () => {
-      modal.style.display = "flex"; // mostra popup
-      modalImg.src = img.src; // coloca a imagem clicada dentro do modal
-    });
-  });
+    
+    <footer class="py-8 px-4 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">© 2023 Wesley Farias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
-  // Fecha o modal ao clicar no X
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
+    
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <button class="nav-btn prev-btn" onclick="prevImage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn next-btn" onclick="nextImage()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
 
-  // Fecha o modal clicando fora da imagem
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
+    <script>
+        
+        const projectImages = [
+            [
+                '/img/Perfilp4.png',
+                '/img/Perfilp2.png',
+                '/img/Perfilp3.png',
+                '/img/blog1.png',
+                '/img/blog2.png',
+            ],
+            [
+                '/img/E4.png',
+                '/img/E2.png',
+                '/img/E3.png',
 
-    document.querySelectorAll(".carousel").forEach(carousel => {
-      const images = carousel.querySelector(".carousel-images");
-      const prev = carousel.querySelector(".prev");
-      const next = carousel.querySelector(".next");
-      const total = images.children.length;
-      let index = 0;
+            ],
+            [
+                '/img/id0.png',
+                '/img/id2.png',
+                '/img/id3.png',
+                '/img/id4.png',
+                
+            ],
+           
+        ];
 
-      function showImage(i) {
-        index = (i + total) % total;
-        images.style.transform = `translateX(${-index * 100}%)`;
-      }
+        let currentProject = 0;
+        let currentImageIndex = 0;
 
-      prev.addEventListener("click", () => showImage(index - 1));
-      next.addEventListener("click", () => showImage(index + 1));
-    });
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
 
-src="https://unpkg.com/aos@2.3.1/dist/aos.js"
-AOS.init();
+        
+        function typeWriter() {
+            const texts = [
+                'Desenvolvedor Front-end React & Designer UX/UI',
+                'Especialista em TypeScript',
+                'Criador de Experiências Digitais',
+            ];
+            let textIndex = 0;
+            let charIndex = 0;
+            const typingElement = document.getElementById('typingText');
+            
+            function type() {
+                if (charIndex < texts[textIndex].length) {
+                    typingElement.textContent = texts[textIndex].substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(erase, 2000);
+                }
+            }
+            
+            function erase() {
+                if (charIndex > 0) {
+                    typingElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, 50);
+                } else {
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(type, 500);
+                }
+            }
+            
+            type();
+        }
 
-</script>
+       
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
 
+      
+        function openModal(projectIndex) {
+            currentProject = projectIndex;
+            currentImageIndex = 0;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = projectImages[currentProject][currentImageIndex];
+            modal.classList.add('active');
+        }
 
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
 
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % projectImages[currentProject].length;
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = projectImages[currentProject][currentImageIndex];
+        }
 
-</body></html>
+        function prevImage() {
+            currentImageIndex = currentImageIndex === 0 
+                ? projectImages[currentProject].length - 1 
+                : currentImageIndex - 1;
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = projectImages[currentProject][currentImageIndex];
+        }
+
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+                form.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        }
+
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                }
+            }
+        });
+
+        
+        window.addEventListener('load', function() {
+            typeWriter();
+            
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateSkillBars();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            const skillsSection = document.getElementById('skills');
+            observer.observe(skillsSection);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ba14ad04b6a5c6',t:'MTc1OTk3MzA5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
